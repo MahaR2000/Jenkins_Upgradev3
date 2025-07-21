@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/suganyaingit/Jenkins_Upgradev3.git', branch: 'master'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building the project...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline succeeded!'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
+    }
+}
